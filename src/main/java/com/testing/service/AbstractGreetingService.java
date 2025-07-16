@@ -7,5 +7,5 @@ public abstract class AbstractGreetingService {
     /**
      * Return a greeting for the given name.
      */
-    public abstract String greet(String name) {};
+    public abstract String greet(String name);
 }
