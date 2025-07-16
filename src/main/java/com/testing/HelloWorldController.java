@@ -12,6 +12,9 @@ import org.springframework.http.MediaType;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+
+
+
 /**
  * A very basic Hello World controller which returns the hostname.
  *
@@ -27,12 +30,21 @@ public class HelloWorldController {
     public static final String HOSTNAME_KEY = "hostname";
     public static final String IP_KEY = "ip";
 
+    private final AbstractGreetingService greetingService;
+
+    public HelloWorldController(AbstractGreetingService greetingService) {
+        this.greetingService = greetingService;
+    }
+
     @GetMapping(path = "/", produces = MediaType.APPLICATION_JSON_UTF8_VALUE)
     public Map<String, String> helloWorld() throws UnknownHostException {
         return getResponse();
     }
 
     private Map<String, String> getResponse() throws UnknownHostException {
+
+        String message = greetingService.greet("World");
+
         String host = InetAddress.getLocalHost().getHostName();
         String ip = InetAddress.getLocalHost().getHostAddress();
         Map<String, String> response = new HashMap<>();
