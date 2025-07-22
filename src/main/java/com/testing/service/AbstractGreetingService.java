@@ -10,10 +10,3 @@ public abstract class AbstractGreetingService {
     public abstract String greet(String name);
 }
 
-
-private class CatService {
-    /**
-     * Return a greeting for the given name.
-     */
-    public String greet(String name);
-}

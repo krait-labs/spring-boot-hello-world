@@ -13,6 +13,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.testing.cat.CatBase;
 import com.testing.cat.CatBreed;
+import com.testing.cat.CatName;
 import com.testing.service.AbstractGreetingService;
 
 
@@ -26,13 +27,6 @@ import com.testing.service.AbstractGreetingService;
 public class HelloWorldController {
 
     // Private inner class extending private base
-    private static class CatName extends com.testing.cat.CatBase {
-        @Override
-        public void meow() {
-            System.out.println("meow from Whiskers");
-            // speak();  // inherited from CatBase
-        }
-    }
 
     private static final Logger LOG = getLogger(HelloWorldController.class.getName());
 
