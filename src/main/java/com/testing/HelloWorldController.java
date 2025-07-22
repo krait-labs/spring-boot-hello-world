@@ -1,17 +1,18 @@
 package com.testing;
 
-import static org.slf4j.LoggerFactory.getLogger;
-
 import java.net.InetAddress;
 import java.net.UnknownHostException;
 import java.util.HashMap;
 import java.util.Map;
 
 import org.slf4j.Logger;
+import static org.slf4j.LoggerFactory.getLogger;
 import org.springframework.http.MediaType;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.testing.cat.CatBase;
+import com.testing.cat.CatBreed;
 import com.testing.service.AbstractGreetingService;
 
 
@@ -23,6 +24,15 @@ import com.testing.service.AbstractGreetingService;
  */
 @RestController
 public class HelloWorldController {
+
+    // Private inner class extending private base
+    private static class CatName extends com.testing.cat.CatBase {
+        @Override
+        public void meow() {
+            System.out.println("meow from Whiskers");
+            // speak();  // inherited from CatBase
+        }
+    }
 
     private static final Logger LOG = getLogger(HelloWorldController.class.getName());
 
@@ -44,6 +54,12 @@ public class HelloWorldController {
     private Map<String, String> getResponse() throws UnknownHostException {
 
         String message = greetingService.greet("World");
+
+        CatBase breed = new CatBreed();
+        breed.meow();
+
+        CatBase name = new CatName();
+        name.meow();
 
         String host = InetAddress.getLocalHost().getHostName();
         String ip = InetAddress.getLocalHost().getHostAddress();
