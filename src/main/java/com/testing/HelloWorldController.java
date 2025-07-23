@@ -26,8 +26,6 @@ import com.testing.service.AbstractGreetingService;
 @RestController
 public class HelloWorldController {
 
-    // Private inner class extending private base
-
     private static final Logger LOG = getLogger(HelloWorldController.class.getName());
 
     public static final String MESSAGE_KEY = "message";
